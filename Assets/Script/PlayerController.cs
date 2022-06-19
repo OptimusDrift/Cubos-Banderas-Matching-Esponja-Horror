@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public GameObject eventSystem;
     Rigidbody rb;
     public bool pared;
     private bool go;
@@ -13,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public string movimiento;
     private Vector2 touchDeltaPosition;
     private float x, z;
-    public Text debug;
     public GameObject[] colis;
     // Start is called before the first frame update
     void Start()

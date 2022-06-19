@@ -11,6 +11,10 @@ TagManager:
   - Izquierda
   - Arriba
   - Verde
+  - Amarillo
+  - Naranja
+  - Rojo
+  - Negro
   layers:
   - Default
   - TransparentFX

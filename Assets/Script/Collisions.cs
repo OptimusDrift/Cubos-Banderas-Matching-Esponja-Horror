@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Collisions : MonoBehaviour
 {
     public GameObject obj;
-    public Text debug;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,20 +20,22 @@ public class Collisions : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //Cubo - Pared
         if(obj.GetComponent<PlayerController>().Col(other.gameObject.tag)){
             obj.GetComponent<PlayerController>().setPared(true);
-            debug.text = "Color: " + obj.tag + " - " + other.tag;
             obj.GetComponent<PlayerController>().DesactivarColisiones();
             return;
         }
+        //Cubo consumir
         if (other.tag == obj.tag && other.GetComponent<PlayerController>().getPared())
         {
-            if((EventSystem.getColor(obj.tag) + 1) <= 2){
+            if((obj.GetComponent<PlayerController>().eventSystem.GetComponent<EventSystem>().getColor(obj.tag) + 1) <= 2){
                 Destroy(other.gameObject);
             }
             Destroy(obj);
             return;
         }
+        //Cubo - Cubo
         if (other.transform.gameObject.tag == obj.GetComponent<PlayerController>().movimiento || (other.transform.gameObject.layer == 9 && other.GetComponent<PlayerController>().getPared()))
         {
             obj.GetComponent<PlayerController>().setPared(true);

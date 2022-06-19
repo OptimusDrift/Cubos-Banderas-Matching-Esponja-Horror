@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class EventSystem : MonoBehaviour
 {
-    public static int verde = 3, amarillo = 0, naranja = 0, celeste = 0, rojo = 0, azul = 3, rosa = 0;
-    public static EventSystem instance;
-    // Start is called before the first frame update
-    public static EventSystem getInstance()
-    {
-        if (instance == null)
-        {
-            instance = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        }
-        return instance;
-    }
+    public int verde = 0, amarillo = 0, naranja = 0, celeste = 0, rojo = 0, azul = 0, rosa = 0;
 
-    public static int getColor(string color)
+    public int getColor(string color)
     {
         if (color == "Verde")
         {
