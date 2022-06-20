@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 touchDeltaPosition;
     private float x, z;
     public GameObject[] colis;
-    // Start is called before the first frame update
+    public int cub = 0;
     void Start()
     {
         this.rb = GetComponent<Rigidbody>();
@@ -24,54 +24,66 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        if (eventSystem.GetComponent<EventSystem>().loadLevel && eventSystem.GetComponent<EventSystem>().play)
         {
-            touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            go = true;
-            pared = false;
-        }
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended && go)
-        {
-            if (Mathf.Abs(touchDeltaPosition.x) > Mathf.Abs(touchDeltaPosition.y))
+
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
             {
-                if (touchDeltaPosition.x > 0f)
+                touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                go = true;
+                pared = false;
+            }
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                if (Mathf.Abs(touchDeltaPosition.x) > Mathf.Abs(touchDeltaPosition.y))
                 {
-                    x = speed;
-                    movimiento = "Derecha";
-                    //debug.text = movimiento;
+                    if (touchDeltaPosition.x > 0f)
+                    {
+                        x = speed;
+                        movimiento = "Derecha";
+                    }
+                    else
+                    {
+                        x = -speed;
+                        movimiento = "Izquierda";
+                    }
+                    z = 0;
+                    SetConstraintsX();
+                    stop = false;
+                    ActivarColisiones();
+                    cub = 1;
+                    rb.velocity = new Vector3(x, 0, z);
                 }
                 else
                 {
-                    x = -speed;
-                    movimiento = "Izquierda";
-                    //debug.text = movimiento;
+                    if (touchDeltaPosition.y > 0f)
+                    {
+                        z = speed;
+                        movimiento = "Arriba";
+                    }
+                    else
+                    {
+                        z = -speed;
+                        movimiento = "Abajo";
+                    }
+                    x = 0;
+                    SetConstraintsZ();
+                    stop = false;
+                    ActivarColisiones();
+                    cub = 1;
+                    rb.velocity = new Vector3(x, 0, z);
                 }
-                z = 0;
-                stop = false;
-                ActivarColisiones();
             }
-            else
-            {
-                if (touchDeltaPosition.y > 0f)
-                {
-                    z = speed;
-                    movimiento = "Arriba";
-                    //debug.text = movimiento;
-                }
-                else
-                {
-                    z = -speed;
-                    movimiento = "Abajo";
-                    //debug.text = movimiento;
-                }
-                x = 0;
-                stop = false;
-                ActivarColisiones();
-            }
-            go = false;
         }
         rb.velocity = new Vector3(x, 0, z);
+    }
 
+    private void SetConstraintsZ(){
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+    }
+
+    private void SetConstraintsX(){
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
     }
 
     public bool Col(string tag){
@@ -92,6 +104,7 @@ public class PlayerController : MonoBehaviour
         z = 0;
         rb.velocity = Vector3.zero;
         stop = true;
+        cub = 0;
     }
 
     private void ActivarColisiones(){
@@ -131,24 +144,4 @@ public class PlayerController : MonoBehaviour
         }
         return "";
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        debug.text = collision.gameObject.tag;
-        if (collision.gameObject.tag == movimiento)
-        {
-            x = 0;
-            z = 0;
-            rb.velocity = Vector3.zero;
-            pared = true;
-        }
-        if (collision.gameObject.tag == gameObject.tag && pared)
-        {
-            if (system.GetComponent<EventSystem>().getColor(gameObject.tag) <= 2)
-            {
-                Destroy(collision.gameObject);
-            }
-            Destroy(gameObject);
-        }
-    }*/
 }
