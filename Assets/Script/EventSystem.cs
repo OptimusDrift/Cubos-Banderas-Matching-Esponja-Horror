@@ -6,9 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class EventSystem : MonoBehaviour
 {
-    public int verde = 1, amarillo = 1, naranja = 1, celeste = 1, rojo = 1, azul = 1, fucsia = 1;
+    public int verde = 1, amarillo = 1, naranja = 1, rojo = 1, azul = 1, fucsia = 1;
     public Canvas canvas;
     public GameObject button;
+    public GameObject Verde;
+    public GameObject Rojo;
+    public GameObject Naranja;
+    public GameObject Fucsia;
+    public GameObject Azul;
+    public GameObject Amarillo;
+
     public string siguienteNivel;
     public bool loadLevel = false;
     public bool play = true;
@@ -57,11 +64,6 @@ public class EventSystem : MonoBehaviour
             naranja = naranja - 1;
             return naranja;
         }
-        if (color == "Celeste")
-        {
-            celeste = celeste - 1;
-            return celeste;
-        }
         if (color == "Rojo")
         {
             rojo = rojo - 1;
@@ -82,7 +84,7 @@ public class EventSystem : MonoBehaviour
 
     public void NextLevel()
     {
-        if ((verde + amarillo + naranja + celeste + rojo + azul + fucsia) <= 7)
+        if ((verde + amarillo + naranja + rojo + azul + fucsia) <= 6)
         {
             canvas.GetComponent<CanvasGroup>().alpha += .6f * Time.deltaTime;
             if (canvas.GetComponent<CanvasGroup>().alpha >= 1)
@@ -100,6 +102,39 @@ public class EventSystem : MonoBehaviour
             {
                 loadLevel = true;
             }
+        }
+    }
+
+    public void ActivarParticula(GameObject color){
+        if (color.tag == "Verde")
+        {
+            Instantiate(Verde, color.transform.position, new Quaternion());
+            return;
+        }
+        if (color.tag == "Amarillo")
+        {
+            Instantiate(Amarillo, color.transform.position, new Quaternion());
+            return;
+        }
+        if (color.tag == "Naranja")
+        {
+            Instantiate(Naranja, color.transform.position, new Quaternion());
+            return;
+        }
+        if (color.tag == "Rojo")
+        {
+            Instantiate(Rojo, color.transform.position, new Quaternion());
+            return;
+        }
+        if (color.tag == "Azul")
+        {
+            Instantiate(Azul, color.transform.position, new Quaternion());
+            return;
+        }
+        if (color.tag == "Fucsia")
+        {
+            Instantiate(Fucsia, color.transform.position, new Quaternion());
+            return;
         }
     }
 }
