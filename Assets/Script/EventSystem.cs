@@ -8,6 +8,7 @@ public class EventSystem : MonoBehaviour
 {
     public int verde = 1, amarillo = 1, naranja = 1, celeste = 1, rojo = 1, azul = 1, fucsia = 1;
     public Canvas canvas;
+    public GameObject button;
     public string siguienteNivel;
     public bool loadLevel = false;
     public bool play = true;

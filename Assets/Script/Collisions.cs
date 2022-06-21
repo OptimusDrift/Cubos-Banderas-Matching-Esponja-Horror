@@ -41,12 +41,14 @@ public class Collisions : MonoBehaviour
         {
             if (other.tag == "Negro" || obj.tag == "Negro")
             {
-                return;
+                obj.GetComponent<PlayerController>().setPared(true);
+                obj.GetComponent<PlayerController>().Reset();
+                obj.GetComponent<PlayerController>().DesactivarColisiones();
             }
             if (other.GetComponent<PlayerController>().getPared())
             {
                 //Reset level
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                obj.GetComponent<PlayerController>().eventSystem.GetComponent<EventSystem>().button.GetComponent<ButtonRestart>().restart = true;
                 return;
             }
         }
