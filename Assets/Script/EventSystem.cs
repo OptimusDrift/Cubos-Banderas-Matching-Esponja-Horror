@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class EventSystem : MonoBehaviour
 {
     public int verde = 1, amarillo = 1, naranja = 1, rojo = 1, azul = 1, fucsia = 1;
-    public Canvas canvas;
+    public GameObject canvas;
+    public GameObject image;
     public GameObject button;
     public GameObject Verde;
     public GameObject Rojo;
@@ -20,6 +21,7 @@ public class EventSystem : MonoBehaviour
     public bool loadLevel = false;
     public bool play = true;
     public GameObject[] cubos;
+    public GameObject bandera;
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -86,21 +88,41 @@ public class EventSystem : MonoBehaviour
     {
         if ((verde + amarillo + naranja + rojo + azul + fucsia) <= 6)
         {
-            canvas.GetComponent<CanvasGroup>().alpha += .6f * Time.deltaTime;
-            if (canvas.GetComponent<CanvasGroup>().alpha >= 1)
+            if (!bandera.GetComponent<BanderaButton>().cargado)
             {
-                SceneManager.LoadScene(siguienteNivel);
+                canvas.SetActive(true);
+                bandera.SetActive(true);
+                canvas.GetComponent<CanvasGroup>().alpha += 1 * Time.deltaTime;
+                bandera.GetComponent<CanvasGroup>().alpha += 1 * Time.deltaTime;
             }
+            if (bandera.GetComponent<CanvasGroup>().alpha >= 1 || bandera.GetComponent<BanderaButton>().cargado)
+            {
+                bandera.GetComponent<BanderaButton>().cargado = true;
+                if (bandera.GetComponent<BanderaButton>().next)
+                {
+                    Debug.Log("Next");
+                    canvas.gameObject.SetActive(true);
+                    image.GetComponent<CanvasGroup>().alpha += .6f * Time.deltaTime;
+                    bandera.GetComponent<CanvasGroup>().alpha -= .6f * Time.deltaTime;
+                    if (image.GetComponent<CanvasGroup>().alpha >= 1)
+                    {
+                        SceneManager.LoadScene(siguienteNivel);
+                    }
+                }
+            }
+            
         }
     }
 
     public void LoadLevel()
     {
         if (!loadLevel){
-            canvas.GetComponent<CanvasGroup>().alpha -= .6f * Time.deltaTime;
-            if (canvas.GetComponent<CanvasGroup>().alpha <= 0)
+            image.GetComponent<CanvasGroup>().alpha -= .6f * Time.deltaTime;
+            if (image.GetComponent<CanvasGroup>().alpha <= 0)
             {
                 loadLevel = true;
+                Debug.Log("Load");
+                canvas.gameObject.SetActive(false);
             }
         }
     }

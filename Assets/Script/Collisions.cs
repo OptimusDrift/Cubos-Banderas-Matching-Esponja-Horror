@@ -49,7 +49,7 @@ public class Collisions : MonoBehaviour
             Destroy(obj);
             if((obj.GetComponent<PlayerController>().eventSystem.GetComponent<EventSystem>().getColor(obj.tag) + 1) <= 2){
                 Destroy(other.gameObject);
-                other.GetComponent<EventSystem>().ActivarParticula(other.gameObject);
+                //other.GetComponent<EventSystem>().ActivarParticula(other.gameObject);
                 return;
             }
             other.transform.DOPunchScale(new Vector3(6, 6, 6), .4f, 7, 20);

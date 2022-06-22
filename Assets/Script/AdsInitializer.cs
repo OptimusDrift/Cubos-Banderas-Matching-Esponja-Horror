@@ -7,6 +7,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     [SerializeField] string _iOSGameId;
     [SerializeField] bool _testMode = true;
     private string _gameId;
+    public GameObject image;
+    public GameObject publicidad;
 
     void Awake()
     {
@@ -29,5 +31,12 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
         Debug.Log($"Unity Ads Initialization Failed: {error.ToString()} - {message}");
+    }
+
+    void OnMouseDown()
+    {
+        publicidad.GetComponent<RewardedAdsButton>().LoadAd();
+        publicidad.GetComponent<RewardedAdsButton>().ShowAd();
+        image.SetActive(true);
     }
 }

@@ -20,7 +20,7 @@ public class ButtonRestart : MonoBehaviour
     {
         if (!ready)
         {
-            if (canvas.GetComponent<CanvasGroup>().alpha <= 0) {
+            if (!canvas.gameObject.activeInHierarchy) {
                 ready = true;
             }
 
@@ -33,6 +33,8 @@ public class ButtonRestart : MonoBehaviour
 
     public void Restart()
     {
+        Debug.Log("Restart");
+        canvas.gameObject.SetActive(true);
         canvas.GetComponent<CanvasGroup>().alpha += .6f * Time.deltaTime;
         if (canvas.GetComponent<CanvasGroup>().alpha >= 1)
         {
