@@ -348,6 +348,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3710192377869319207, guid: ed674522a2cc070438ab89f88ce56450,
+        type: 3}
+      propertyPath: pared
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710192377869319207, guid: ed674522a2cc070438ab89f88ce56450,
+        type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1114040580}
+    - target: {fileID: 3800991749211531677, guid: ed674522a2cc070438ab89f88ce56450,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5165405620913803589, guid: ed674522a2cc070438ab89f88ce56450,
         type: 3}
       propertyPath: m_Enabled
@@ -358,6 +373,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cb7c728501082c74a8d5db9e6e2a66f0, type: 2}
+    - target: {fileID: 5597783721979394020, guid: ed674522a2cc070438ab89f88ce56450,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5760951263597410715, guid: ed674522a2cc070438ab89f88ce56450,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5795746424680307861, guid: ed674522a2cc070438ab89f88ce56450,
         type: 3}
       propertyPath: debug
@@ -666,20 +691,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 50888291}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &50888297
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50888292}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0142
-  m_Height: 0.0019905674
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &66838035
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +801,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &73371352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4076469965461134446, guid: 641acfba27aa3c848bac95da9f0ae100,
+    type: 3}
+  m_PrefabInstance: {fileID: 4076469965825559497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &152049942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1027,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &235615226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 632120197395579664, guid: 641acfba27aa3c848bac95da9f0ae100,
+    type: 3}
+  m_PrefabInstance: {fileID: 4076469965825559497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &238557842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,12 +1265,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!223 &508090282 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 4076469965461134435, guid: 641acfba27aa3c848bac95da9f0ae100,
-    type: 3}
-  m_PrefabInstance: {fileID: 4076469965825559497}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &562806477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +1454,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &679916398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4076469964311408693, guid: 641acfba27aa3c848bac95da9f0ae100,
+    type: 3}
+  m_PrefabInstance: {fileID: 4076469965825559497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,17 +2076,27 @@ MonoBehaviour:
   verde: 2
   amarillo: 1
   naranja: 1
-  celeste: 1
   rojo: 1
   azul: 1
   fucsia: 1
-  canvas: {fileID: 508090282}
+  canvas: {fileID: 73371352}
+  image: {fileID: 679916398}
+  button: {fileID: 0}
+  Verde: {fileID: 0}
+  Rojo: {fileID: 0}
+  Naranja: {fileID: 0}
+  Fucsia: {fileID: 0}
+  Azul: {fileID: 0}
+  Amarillo: {fileID: 0}
   siguienteNivel: Lv1
   loadLevel: 0
   play: 1
   cubos:
-  - {fileID: 1970215978}
   - {fileID: 50888292}
+  - {fileID: 1970215978}
+  bandera: {fileID: 235615226}
+  ignorarBandera: 1
+  win: 0
 --- !u!4 &1114040582
 Transform:
   m_ObjectHideFlags: 0
@@ -3541,6 +3574,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3710192377869319207, guid: ed674522a2cc070438ab89f88ce56450,
+        type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1114040580}
     - target: {fileID: 5165405620913803589, guid: ed674522a2cc070438ab89f88ce56450,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3844,20 +3882,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1970215977}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1970215983
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970215978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0142
-  m_Height: 0.0019905674
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2086181406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4128,6 +4152,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1870564884757029944, guid: 641acfba27aa3c848bac95da9f0ae100,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4076469965461134434, guid: 641acfba27aa3c848bac95da9f0ae100,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4238,6 +4267,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 4076469965461134437, guid: 641acfba27aa3c848bac95da9f0ae100,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4076469965461134446, guid: 641acfba27aa3c848bac95da9f0ae100,
         type: 3}
       propertyPath: m_Name

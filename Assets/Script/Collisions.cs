@@ -8,6 +8,7 @@ using DG.Tweening;
 public class Collisions : MonoBehaviour
 {
     public GameObject obj;
+    public GameObject cubito;
 
     // Start is called before the first frame update
     void Start()
@@ -18,34 +19,44 @@ public class Collisions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
+    public void Colis(GameObject obj)
+    {
+        obj.GetComponent<PlayerController>().setPared(true);
+        obj.GetComponent<PlayerController>().Reset();
+        obj.GetComponent<PlayerController>().DesactivarColisiones();
+    }
+
+    public void Anims(GameObject obj)
+    {
+        if (obj.GetComponent<PlayerController>().movimiento == "Derecha" || obj.GetComponent<PlayerController>().movimiento == "Izquierda")
+        {
+            Debug.Log("a");
+            cubito.transform.DOPunchScale(new Vector3(0, 0, 0.3f), .2f, 1, .03f);
+            return;
+        }
+        else
+        {
+            Debug.Log("b");
+            cubito.transform.DOPunchScale(new Vector3(0.3f, 0, 0), .2f, 1, .03f);
+        }
+        return;
+    }
     private void OnTriggerStay(Collider other)
     {
         var x = DOTween.Init();
         //Cubo - Pared
         if(obj.GetComponent<PlayerController>().Col(other.gameObject.tag)){
-            obj.GetComponent<PlayerController>().setPared(true);
-            obj.GetComponent<PlayerController>().Reset();
-            obj.GetComponent<PlayerController>().DesactivarColisiones();
-            if (obj.GetComponent<PlayerController>().movimiento == "Derecha" || obj.GetComponent<PlayerController>().movimiento == "Izquierda")
-            {
-                obj.transform.DOPunchScale(new Vector3(1, 1, -6), .4f, 7, 20);
-                return;
-            }else
-            {
-                obj.transform.DOPunchScale(new Vector3(-6, 1, 1), .4f, 7, 20);
-            }
+            Colis(obj);
+            Anims(obj);
             return;
         }
         //Cubo consumir
-        if (other.tag == obj.tag && other.GetComponent<PlayerController>().getPared() && other.tag != "Negro")
+        if (other.tag == obj.tag && other.GetComponent<PlayerController>().getPared() && !other.CompareTag("Negro"))
         {
             //obj.transform.DOPunchScale(new Vector3(6, 1, 1), .4f, 7, 20);
-            obj.GetComponent<PlayerController>().setPared(true);
-            obj.GetComponent<PlayerController>().Reset();
-            obj.GetComponent<PlayerController>().DesactivarColisiones();
+            Colis(obj);
             Destroy(obj);
             if((obj.GetComponent<PlayerController>().eventSystem.GetComponent<EventSystem>().getColor(obj.tag) + 1) <= 2){
                 Destroy(other.gameObject);
@@ -55,20 +66,13 @@ public class Collisions : MonoBehaviour
             other.transform.DOPunchScale(new Vector3(6, 6, 6), .4f, 7, 20);
             return;
         }
-        if (other.tag == "Pincho" || obj.tag == "Pincho")
+        if (other.CompareTag("Pincho") || obj.CompareTag("Pincho"))
         {
-            if (other.tag == "Negro" || obj.tag == "Negro")
+            if (other.CompareTag("Negro") || obj.CompareTag("Negro"))
             {
-                obj.GetComponent<PlayerController>().setPared(true);
-                obj.GetComponent<PlayerController>().Reset();
-                obj.GetComponent<PlayerController>().DesactivarColisiones();
-                if (obj.GetComponent<PlayerController>().movimiento == "Derecha" || obj.GetComponent<PlayerController>().movimiento == "Izquierda")
-            {
-                obj.transform.DOPunchScale(new Vector3(1, 1, -6), .4f, 7, 20);
-            }else
-            {
-                obj.transform.DOPunchScale(new Vector3(-6, 1, 1), .4f, 7, 20);
-            }
+                Colis(obj);
+                Anims(obj);
+                return;
             }
             if (other.GetComponent<PlayerController>().getPared())
             {
@@ -80,18 +84,8 @@ public class Collisions : MonoBehaviour
         //Cubo - Cubo
         if (other.transform.gameObject.tag == obj.GetComponent<PlayerController>().movimiento || (other.transform.gameObject.layer == 9 && other.GetComponent<PlayerController>().getPared()))
         {
-            obj.GetComponent<PlayerController>().setPared(true);
-            obj.GetComponent<PlayerController>().Reset();
-            obj.GetComponent<PlayerController>().DesactivarColisiones();
-            if (obj.GetComponent<PlayerController>().movimiento == "Derecha" || obj.GetComponent<PlayerController>().movimiento == "Izquierda")
-            {
-                obj.transform.DOPunchScale(new Vector3(1, 1, -6), .4f, 7, 20);
-                return;
-            }else
-            {
-                obj.transform.DOPunchScale(new Vector3(-6, 1, 1), .4f, 7, 20);
-            }
-            return;
+            Colis(obj);
+            Anims(obj);
         }
     }
 }

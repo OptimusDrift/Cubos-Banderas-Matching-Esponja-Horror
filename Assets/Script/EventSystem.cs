@@ -22,7 +22,9 @@ public class EventSystem : MonoBehaviour
     public bool play = true;
     public GameObject[] cubos;
     public GameObject bandera;
+    public bool ignorarBandera = false;
 
+    public bool win = false;
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
@@ -88,17 +90,21 @@ public class EventSystem : MonoBehaviour
     {
         if ((verde + amarillo + naranja + rojo + azul + fucsia) <= 6)
         {
+            win = true;
             if (!bandera.GetComponent<BanderaButton>().cargado)
             {
-                canvas.SetActive(true);
-                bandera.SetActive(true);
+                if (!ignorarBandera)
+                {
+                    bandera.GetComponent<CanvasGroup>().alpha += 1 * Time.deltaTime;
+                    bandera.SetActive(true);
+                }
+                    canvas.SetActive(true);
                 canvas.GetComponent<CanvasGroup>().alpha += 1 * Time.deltaTime;
-                bandera.GetComponent<CanvasGroup>().alpha += 1 * Time.deltaTime;
             }
-            if (bandera.GetComponent<CanvasGroup>().alpha >= 1 || bandera.GetComponent<BanderaButton>().cargado)
+            if (bandera.GetComponent<CanvasGroup>().alpha >= 1 || bandera.GetComponent<BanderaButton>().cargado || ignorarBandera)
             {
                 bandera.GetComponent<BanderaButton>().cargado = true;
-                if (bandera.GetComponent<BanderaButton>().next)
+                if (bandera.GetComponent<BanderaButton>().next || ignorarBandera)
                 {
                     Debug.Log("Next");
                     canvas.gameObject.SetActive(true);

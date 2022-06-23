@@ -24,58 +24,61 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (eventSystem.GetComponent<EventSystem>().loadLevel && eventSystem.GetComponent<EventSystem>().play)
+        rb.velocity = new Vector3(x, 0, z);
+        if (!eventSystem.GetComponent<EventSystem>().win)
         {
+            if (eventSystem.GetComponent<EventSystem>().loadLevel && eventSystem.GetComponent<EventSystem>().play)
+            {
 
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-            {
-                touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-                go = true;
-                pared = false;
-            }
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                if (Mathf.Abs(touchDeltaPosition.x) > Mathf.Abs(touchDeltaPosition.y))
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
-                    if (touchDeltaPosition.x > 0f)
-                    {
-                        x = speed;
-                        movimiento = "Derecha";
-                    }
-                    else
-                    {
-                        x = -speed;
-                        movimiento = "Izquierda";
-                    }
-                    z = 0;
-                    SetConstraintsX();
-                    stop = false;
-                    ActivarColisiones();
-                    cub = 1;
-                    rb.velocity = new Vector3(x, 0, z);
+                    touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                    go = true;
+                    pared = false;
                 }
-                else
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
-                    if (touchDeltaPosition.y > 0f)
+                    if (Mathf.Abs(touchDeltaPosition.x) > Mathf.Abs(touchDeltaPosition.y))
                     {
-                        z = speed;
-                        movimiento = "Arriba";
+                        if (touchDeltaPosition.x > 0f)
+                        {
+                            x = speed;
+                            movimiento = "Derecha";
+                        }
+                        else
+                        {
+                            x = -speed;
+                            movimiento = "Izquierda";
+                        }
+                        z = 0;
+                        SetConstraintsX();
+                        stop = false;
+                        ActivarColisiones();
+                        cub = 1;
+                        rb.velocity = new Vector3(x, 0, z);
                     }
                     else
                     {
-                        z = -speed;
-                        movimiento = "Abajo";
+                        if (touchDeltaPosition.y > 0f)
+                        {
+                            z = speed;
+                            movimiento = "Arriba";
+                        }
+                        else
+                        {
+                            z = -speed;
+                            movimiento = "Abajo";
+                        }
+                        x = 0;
+                        SetConstraintsZ();
+                        stop = false;
+                        ActivarColisiones();
+                        cub = 1;
+                        rb.velocity = new Vector3(x, 0, z);
                     }
-                    x = 0;
-                    SetConstraintsZ();
-                    stop = false;
-                    ActivarColisiones();
-                    cub = 1;
-                    rb.velocity = new Vector3(x, 0, z);
                 }
             }
         }
-        rb.velocity = new Vector3(x, 0, z);
     }
 
     private void SetConstraintsZ(){
