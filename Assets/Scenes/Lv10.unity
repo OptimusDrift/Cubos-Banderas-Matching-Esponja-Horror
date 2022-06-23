@@ -4860,6 +4860,11 @@ PrefabInstance:
       propertyPath: eventSystem
       value: 
       objectReference: {fileID: 1114040580}
+    - target: {fileID: 5760951263597410715, guid: ed674522a2cc070438ab89f88ce56450,
+        type: 3}
+      propertyPath: m_TagString
+      value: Azul
+      objectReference: {fileID: 0}
     - target: {fileID: 6333215390943963690, guid: ed674522a2cc070438ab89f88ce56450,
         type: 3}
       propertyPath: m_RootOrder
@@ -7691,7 +7696,7 @@ MonoBehaviour:
   Fucsia: {fileID: 0}
   Azul: {fileID: 0}
   Amarillo: {fileID: 0}
-  siguienteNivel: Menu
+  siguienteNivel: Lv1
   loadLevel: 0
   play: 1
   cubos:
@@ -8819,12 +8824,12 @@ PrefabInstance:
     - target: {fileID: 1277171416201751005, guid: 641acfba27aa3c848bac95da9f0ae100,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1080
+      value: 2160
       objectReference: {fileID: 0}
     - target: {fileID: 1277171416201751005, guid: 641acfba27aa3c848bac95da9f0ae100,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1080
+      value: 2160
       objectReference: {fileID: 0}
     - target: {fileID: 1870564884757029944, guid: 641acfba27aa3c848bac95da9f0ae100,
         type: 3}

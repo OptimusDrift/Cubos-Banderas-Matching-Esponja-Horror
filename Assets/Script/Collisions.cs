@@ -55,15 +55,13 @@ public class Collisions : MonoBehaviour
         //Cubo consumir
         if (other.tag == obj.tag && other.GetComponent<PlayerController>().getPared() && !other.CompareTag("Negro"))
         {
-            //obj.transform.DOPunchScale(new Vector3(6, 1, 1), .4f, 7, 20);
             Colis(obj);
             Destroy(obj);
+            obj.transform.DOPunchScale(new Vector3(0.3f, 0.3f, 0.3f), .4f, 7, 20);
             if((obj.GetComponent<PlayerController>().eventSystem.GetComponent<EventSystem>().getColor(obj.tag) + 1) <= 2){
                 Destroy(other.gameObject);
-                //other.GetComponent<EventSystem>().ActivarParticula(other.gameObject);
                 return;
             }
-            other.transform.DOPunchScale(new Vector3(6, 6, 6), .4f, 7, 20);
             return;
         }
         if (other.CompareTag("Pincho") || obj.CompareTag("Pincho"))
