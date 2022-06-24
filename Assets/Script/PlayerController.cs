@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(x, 0, z);
         if (!eventSystem.GetComponent<EventSystem>().win)
         {
-            if (eventSystem.GetComponent<EventSystem>().loadLevel && eventSystem.GetComponent<EventSystem>().play)
+            if (eventSystem.GetComponent<EventSystem>().play)
             {
 
                 if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)

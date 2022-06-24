@@ -122,7 +122,7 @@ public class EventSystem : MonoBehaviour
 
     public void LoadLevel()
     {
-        if (!loadLevel){
+        if (!loadLevel && !win){
             image.GetComponent<CanvasGroup>().alpha -= .6f * Time.deltaTime;
             if (image.GetComponent<CanvasGroup>().alpha <= 0)
             {
