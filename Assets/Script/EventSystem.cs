@@ -42,13 +42,17 @@ public class EventSystem : MonoBehaviour
             catch (System.Exception)
             {
             }
-        }
-        if (x > 0)
-        {
-            play = false;
-        }else
-        {
-            play = true;
+            if (x > 0)
+            {
+                play = false;
+                i.GetComponent<PlayerController>().noMover = false;
+                break;
+            }
+            else
+            {
+                play = true;
+                i.GetComponent<PlayerController>().noMover = false;
+            }
         }
     }
     public int getColor(string color)

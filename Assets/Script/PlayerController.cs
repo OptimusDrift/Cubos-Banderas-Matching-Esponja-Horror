@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool pared;
     private bool go;
     public bool stop;
+    public bool noMover = false;
     public string movimiento;
     private Vector2 touchDeltaPosition;
     private float x, z;
