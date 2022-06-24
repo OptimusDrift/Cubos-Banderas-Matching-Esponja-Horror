@@ -33365,6 +33365,11 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 741576519}
+    - target: {fileID: 131535124926329778, guid: dba257b450e09454182567221d95569f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1445692677059220861, guid: dba257b450e09454182567221d95569f,
         type: 3}
       propertyPath: m_Sprite
@@ -33376,35 +33381,15 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 1813226035}
-    - target: {fileID: 5183162077331999584, guid: dba257b450e09454182567221d95569f,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 28.721
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183162077331999584, guid: dba257b450e09454182567221d95569f,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 5.230924
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183162077331999584, guid: dba257b450e09454182567221d95569f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183162077331999584, guid: dba257b450e09454182567221d95569f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183162077331999584, guid: dba257b450e09454182567221d95569f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6037704354692299459, guid: dba257b450e09454182567221d95569f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796866926572213214, guid: dba257b450e09454182567221d95569f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dba257b450e09454182567221d95569f, type: 3}
